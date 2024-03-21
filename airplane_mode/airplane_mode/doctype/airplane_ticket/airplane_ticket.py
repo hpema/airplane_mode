@@ -7,12 +7,31 @@ from frappe.model.document import Document
 
 class AirplaneTicket(Document):
 	
-	def before_validate(self):
-		total = 0
-		for line in self.add_ons:
-			total = total + line.amount
-
-		self.total_amount = self.flight_price + total
 
 	def validate(self):
-		pass
+		items = set()
+		rows_to_remove = []
+
+		for item in self.add_ons:
+			if item.item in items:
+				#frappe.msgprint(item.item + ":" + item.name)
+				rows_to_remove.append(item.name)
+			else:
+				items.add(item.item)
+
+		if rows_to_remove:
+			for name in rows_to_remove:  # Remove in reverse order to avoid index shifting
+				for item in self.add_ons:
+					if item.name == name:
+						#frappe.msgprint(name)
+						self.add_ons.remove(item)
+
+				#frappe.delete_doc("Airplane Ticket Add-on Item", name)
+				#frappe.msgprint(name)
+
+	def before_save(self):
+		total = 0
+		for line in self.add_ons:
+			total += line.amount
+
+		self.total_amount = self.flight_price + total
