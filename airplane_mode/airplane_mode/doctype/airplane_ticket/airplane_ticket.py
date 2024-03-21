@@ -35,3 +35,8 @@ class AirplaneTicket(Document):
 			total += line.amount
 
 		self.total_amount = self.flight_price + total
+	
+	def before_submit(self):
+		if self.status != "Boarded":
+			frappe.throw('Cannot submit ticket if not boarded.')
+				
