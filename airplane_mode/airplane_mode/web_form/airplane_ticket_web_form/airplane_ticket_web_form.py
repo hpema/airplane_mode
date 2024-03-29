@@ -1,4 +1,5 @@
 import frappe
 
 def get_context(context):
-    context.my_colour = "red"
+	# do your magic here
+	pass
