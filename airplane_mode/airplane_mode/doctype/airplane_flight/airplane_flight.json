@@ -74,11 +74,11 @@
    "reqd": 1
   },
   {
-   "default": "Schedule",
+   "default": "Scheduled",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Schedule\nCompleted\nCancelled"
+   "options": "Scheduled\nCompleted\nCancelled"
   },
   {
    "fieldname": "source_airport",
@@ -141,7 +141,7 @@
  "is_published_field": "is_published",
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-29 20:22:53.303921",
+ "modified": "2024-03-31 16:02:09.754825",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",

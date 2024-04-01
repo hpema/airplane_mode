@@ -1,0 +1,5 @@
+{% if not frappe.form_dict %}
+    <div style="width: 600px; height: 200px; background-color: black;"></div>
+{% else %}
+    <div style="width: 600px; height: 200px; background-color: {{ frappe.form_dict.color }};"></div>
+{% endif %}

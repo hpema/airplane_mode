@@ -6,7 +6,10 @@ from frappe.model.document import Document
 from frappe import log, _
 
 class FlightPassenger(Document):
-	
 	def before_save(self):
-		frappe.msgprint(f'{self.first_name} {self.last_name or ""}')
-		self.full_name = f'{self.first_name} {self.last_name or ""}'
+
+		if self.last_name:
+			self.full_name = f'{self.first_name} {self.last_name or ""}'
+		else:
+			self.full_name = f'{self.first_name}'
+        

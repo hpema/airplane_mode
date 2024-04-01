@@ -9,7 +9,8 @@
   "founding_year",
   "headquarters",
   "column_break_dgeu",
-  "customer_care_number"
+  "customer_care_number",
+  "website"
  ],
  "fields": [
   {
@@ -35,6 +36,12 @@
    "in_list_view": 1,
    "label": "Customer Care Number",
    "reqd": 1
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -44,7 +51,7 @@
    "link_fieldname": "airline"
   }
  ],
- "modified": "2024-03-05 22:08:11.618957",
+ "modified": "2024-03-31 18:38:45.149609",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airline",

@@ -3,7 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
-from random import choices
+import random
 from random import randint
 
 
@@ -32,11 +32,11 @@ class AirplaneTicket(Document):
 				#frappe.msgprint(name)
 
 	def before_save(self):
-		total = 0
+		total = 0.00
 		for line in self.add_ons:
 			total += line.amount
 
-		self.total_amount = self.flight_price + total
+		self.total_amount = float(self.flight_price) + total
 	
 	def before_submit(self):
 		if self.status != "Boarded":
@@ -45,5 +45,5 @@ class AirplaneTicket(Document):
 	
 	def before_insert(self):
 		rows = ['A','B','C','D','E']
-		seatnumber = choices(rows,k=1)[0]+ str(randint(1,90))
+		seatnumber = str(randint(1,90))+random.choices(rows,k=1)[0]
 		self.seat = seatnumber

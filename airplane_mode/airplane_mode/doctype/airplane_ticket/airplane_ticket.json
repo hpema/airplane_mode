@@ -54,15 +54,13 @@
    "fieldtype": "Date",
    "in_filter": 1,
    "in_standard_filter": 1,
-   "label": "Departure Date",
-   "reqd": 1
+   "label": "Departure Date"
   },
   {
    "fetch_from": "flight.duration",
    "fieldname": "duration_of_fiight",
    "fieldtype": "Duration",
-   "label": "Duration of Fiight",
-   "reqd": 1
+   "label": "Duration of Fiight"
   },
   {
    "fieldname": "flight",
@@ -83,8 +81,7 @@
    "fetch_from": "flight.time_of_departure",
    "fieldname": "departure_time",
    "fieldtype": "Time",
-   "label": "Departure Time",
-   "reqd": 1
+   "label": "Departure Time"
   },
   {
    "fieldname": "departure_details_section",
@@ -127,6 +124,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "default": "1500",
    "fieldname": "flight_price",
    "fieldtype": "Currency",
    "label": "Flight Price",
@@ -151,7 +149,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-29 14:30:51.853199",
+ "modified": "2024-03-29 22:36:45.832727",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",
