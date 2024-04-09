@@ -5,7 +5,9 @@ import frappe
 from frappe.model.document import Document
 import random
 from random import randint
-
+from frappe.query_builder import DocType
+from frappe.query_builder.functions import Count
+from pypika.terms import Case
 
 class AirplaneTicket(Document):
 	
@@ -30,6 +32,22 @@ class AirplaneTicket(Document):
 
 				#frappe.delete_doc("Airplane Ticket Add-on Item", name)
 				#frappe.msgprint(name)
+
+		flight = frappe.get_doc("Airplane Flight", self.flight)
+		airplane = frappe.get_doc('Airplane', flight.airplane)
+		
+		AirplaneTicket = DocType("Airplane Ticket") # you can also use frappe.qb.DocType to bypass an import
+		count_all = Count('*').as_("count")
+		
+		result = (
+			frappe.qb.from_(AirplaneTicket)
+   			.select(count_all)
+			.where(AirplaneTicket.flight == flight.name)
+   			).run(as_dict=True)
+  
+		if result[0].count > airplane.capacity:
+			frappe.throw("Flight is fully booked, please choose another fligh.")
+
 
 	def before_save(self):
 		total = 0.00

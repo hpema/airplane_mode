@@ -4,6 +4,30 @@
  frappe.ui.form.on("Airplane Ticket", {
  	refresh(frm) {
         frm.refresh_field("add_ons");
+        frm.add_custom_button(__('Assign Seat'), function(){
+
+            let d = new frappe.ui.Dialog({
+                title: 'Enter details',
+                fields: [
+                    {
+                        label: 'Seat Number',
+                        fieldname: 'seat_number',
+                        fieldtype: 'Data'
+                    }
+                ],
+            
+                size: 'small', // small, large, extra-large 
+                primary_action_label: 'Assign',
+                primary_action(values) {
+                    frm.set_value('seat', values.seat_number);
+                    frm.save();
+                    d.hide();
+                }
+            });
+            
+            d.show();
+
+          }, __('Actions'));
     },
     flight_price(frm){
         frm.trigger("update_total_amount");
@@ -14,8 +38,11 @@
             total = total + item.amount;
         }
         frm.set_value("total_amount", frm.doc.flight_price + total);
-    }
+    },
+    
  });
+
+ 
 
  frappe.ui.form.on("Airplane Ticket Add-on Item", {
     item(frm,cdt, cdn){
