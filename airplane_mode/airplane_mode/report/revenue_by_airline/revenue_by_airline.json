@@ -1,0 +1,39 @@
+{
+ "add_total_row": 1,
+ "columns": [
+  {
+   "fieldname": "airline",
+   "fieldtype": "Link",
+   "label": "Airline",
+   "width": 0
+  },
+  {
+   "fieldname": "revenue",
+   "fieldtype": "Currency",
+   "label": "Revenue",
+   "width": 0
+  }
+ ],
+ "creation": "2024-04-10 23:31:57.279503",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2024-04-10 23:32:30.528790",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Revenue by Airline",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Airline",
+ "report_name": "Revenue by Airline",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}
