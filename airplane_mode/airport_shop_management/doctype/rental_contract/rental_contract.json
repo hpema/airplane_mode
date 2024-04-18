@@ -1,0 +1,95 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format: {tenant}-{start_date}-{shop}",
+ "creation": "2024-04-18 20:54:01.033561",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "rental_amount",
+  "tenant",
+  "full_name",
+  "column_break_rvuj",
+  "start_date",
+  "end_date",
+  "shop",
+  "section_break_dbnq",
+  "rent_due"
+ ],
+ "fields": [
+  {
+   "fetch_if_empty": 1,
+   "fieldname": "rental_amount",
+   "fieldtype": "Currency",
+   "label": "Rental Amount"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "label": "Tenant",
+   "options": "Tenant"
+  },
+  {
+   "fieldname": "column_break_rvuj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "section_break_dbnq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "rent_due",
+   "fieldtype": "Table",
+   "label": "Rent Due",
+   "options": "Rent"
+  },
+  {
+   "fetch_from": "tenant.full_name",
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "shop",
+   "fieldtype": "Link",
+   "label": "Shop",
+   "options": "Shop"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-04-18 23:42:21.112428",
+ "modified_by": "Administrator",
+ "module": "Airport Shop Management",
+ "name": "Rental Contract",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
