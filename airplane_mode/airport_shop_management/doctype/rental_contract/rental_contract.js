@@ -14,3 +14,27 @@ frappe.ui.form.on("Rental Contract", {
         
 	},
 });
+
+
+
+frappe.ui.form.on("Rent Due", {
+    payment_received(frm,cdt, cdn){
+        let row = frappe.get_doc(cdt,cdn); 
+        let idx = row.idx;
+        //let item_added = row.item 
+        
+        //if(item_added !=''){
+        //    for(let item of frm.doc.add_ons){
+        //        if(item.item == item_added && item.idx!=idx){
+        //            //console.log("Duplicate: ", row.name);
+        //            frm.fields_dict.add_ons.grid.grid_rows_by_docname[cdn].remove();
+        //            frappe.throw("Item: " + item_added + " is not unique. Add on already on the list");
+        //        }
+        //    }
+       // }
+       console.log("Burron pressed on row " + idx);
+    },
+   // amount(frm,cdt, cdn){
+   //     frm.trigger("update_total_amount");
+   // }
+ })
