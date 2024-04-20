@@ -1,6 +1,6 @@
 ## Airplane Mode
 
-Day 1 Assignment
+Dubai Dev Training Assignments: Hemant Govan Pema
 
 #### License
 
