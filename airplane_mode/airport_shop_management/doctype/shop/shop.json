@@ -1,22 +1,17 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format: {airport}-{room}-{size}",
+ "autoname": "format: {airport}-{number}",
  "creation": "2024-04-18 20:54:44.327136",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "location",
+  "number",
   "size",
   "column_break_alza",
   "airport"
  ],
  "fields": [
-  {
-   "fieldname": "location",
-   "fieldtype": "Data",
-   "label": "Location"
-  },
   {
    "fieldname": "size",
    "fieldtype": "Data",
@@ -31,11 +26,16 @@
    "fieldtype": "Link",
    "label": "Airport",
    "options": "Airport"
+  },
+  {
+   "fieldname": "number",
+   "fieldtype": "Data",
+   "label": "Number"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-04-18 23:46:37.712541",
+ "modified": "2024-04-19 09:08:45.522491",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Shop",
