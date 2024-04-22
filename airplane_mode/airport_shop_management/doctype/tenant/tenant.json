@@ -15,7 +15,8 @@
   {
    "fieldname": "email",
    "fieldtype": "Data",
-   "label": "Email"
+   "label": "Email",
+   "reqd": 1
   },
   {
    "fieldname": "naming_series",
@@ -30,12 +31,14 @@
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
-   "label": "Full Name"
+   "in_list_view": 1,
+   "label": "Full Name",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-04-18 23:18:02.446782",
+ "modified": "2024-04-22 11:01:09.084341",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Tenant",

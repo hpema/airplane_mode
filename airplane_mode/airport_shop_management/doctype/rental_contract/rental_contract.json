@@ -9,12 +9,19 @@
   "rental_amount",
   "tenant",
   "full_name",
+  "receipt_date",
   "column_break_rvuj",
   "start_date",
   "end_date",
   "shop",
   "section_break_dbnq",
-  "rent_due"
+  "rent_due",
+  "amended_from",
+  "section_break_ffwp",
+  "total_amount_due",
+  "column_break_jcsk",
+  "total_amount_paid",
+  "outstanding_amount"
  ],
  "fields": [
   {
@@ -41,7 +48,8 @@
   {
    "fieldname": "end_date",
    "fieldtype": "Date",
-   "label": "End Date"
+   "label": "End Date",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_dbnq",
@@ -55,6 +63,7 @@
   },
   {
    "fetch_from": "tenant.full_name",
+   "fetch_if_empty": 1,
    "fieldname": "full_name",
    "fieldtype": "Data",
    "label": "Full Name",
@@ -65,11 +74,52 @@
    "fieldtype": "Link",
    "label": "Shop",
    "options": "Shop"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Rental Contract",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "receipt_date",
+   "fieldtype": "Date",
+   "label": "Receipt Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_ffwp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_amount_due",
+   "fieldtype": "Currency",
+   "label": "Total Amount Due"
+  },
+  {
+   "fieldname": "total_amount_paid",
+   "fieldtype": "Currency",
+   "label": "Total Amount Paid"
+  },
+  {
+   "fieldname": "column_break_jcsk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "label": "Outstanding Amount"
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2024-04-18 23:42:21.112428",
+ "modified": "2024-04-22 13:05:57.072711",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Rental Contract",

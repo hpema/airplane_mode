@@ -11,7 +11,8 @@
   "column_break_bpbj",
   "due_date",
   "paid_on",
-  "payment_received"
+  "payment_received",
+  "print_receipt"
  ],
  "fields": [
   {
@@ -35,26 +36,34 @@
   {
    "fieldname": "due_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Due Date",
    "read_only": 1
   },
   {
    "fieldname": "paid_on",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Paid On",
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.paid_amount==0;",
    "fieldname": "payment_received",
    "fieldtype": "Button",
-   "in_list_view": 1,
    "label": "Payment Received"
+  },
+  {
+   "depends_on": "eval:doc.paid_amount>0;",
+   "fieldname": "print_receipt",
+   "fieldtype": "Button",
+   "label": "Print Receipt"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-04-18 22:07:58.632171",
+ "modified": "2024-04-22 11:33:40.538710",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Rent",
