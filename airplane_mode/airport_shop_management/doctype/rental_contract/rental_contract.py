@@ -12,7 +12,6 @@ from datetime import date, timedelta
 class RentalContract(Document):
 	def validate(self):
 		rent_amount = frappe.db.get_single_value("Airport Shop Settings", 'default_rent_amount')
-		
 		if self.rental_amount == 0 or self.rental_amount == None:
 			self.rental_amount = rent_amount
 			frappe.errprint(self.rental_amount)
