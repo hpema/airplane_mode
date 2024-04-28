@@ -24,7 +24,8 @@ class RentalContract(Document):
 		self.total_amount_due = self.rental_amount*12
 		self.total_amount_paid = 0 
 		self.outstanding_amount = self.total_amount_due
-  
+		self.paid_amount = 0
+
 	def on_submit(self):
 		#print(self.name)
 		Rent = frappe.qb.DocType("Rent")
@@ -61,10 +62,13 @@ def receive_payment(doctype, name):
         line.db_set("paid_amount",line.rental_amount)
         line.db_set("paid_on",frappe.utils.today())
         parent = frappe.get_doc(line.parenttype,line.parent)
+        parent.db_set("total_amount_paid", parent.total_amount_paid + line.rental_amount)
+        parent.db_set("outstanding_amount", parent.total_amount_due - parent.total_amount_paid)
         parent.db_set("receipt_date", line.paid_on)
         
-        line.save()
-        frappe.db.commit()
+        
+        #line.save()
+        #frappe.db.commit()
         return line.paid_amount
     else:
         return 0

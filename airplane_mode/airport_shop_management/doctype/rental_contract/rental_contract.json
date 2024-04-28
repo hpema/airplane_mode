@@ -14,6 +14,7 @@
   "start_date",
   "end_date",
   "shop",
+  "paid_amount_on_receipt_date",
   "section_break_dbnq",
   "rent_due",
   "amended_from",
@@ -99,12 +100,14 @@
   {
    "fieldname": "total_amount_due",
    "fieldtype": "Currency",
-   "label": "Total Amount Due"
+   "label": "Total Amount Due",
+   "read_only": 1
   },
   {
    "fieldname": "total_amount_paid",
    "fieldtype": "Currency",
-   "label": "Total Amount Paid"
+   "label": "Total Amount Paid",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_jcsk",
@@ -113,13 +116,21 @@
   {
    "fieldname": "outstanding_amount",
    "fieldtype": "Currency",
-   "label": "Outstanding Amount"
+   "label": "Outstanding Amount",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "paid_amount_on_receipt_date",
+   "fieldtype": "Currency",
+   "label": "Paid Amount On Receipt Date",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-22 13:05:57.072711",
+ "modified": "2024-04-28 22:17:32.757959",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Rental Contract",
