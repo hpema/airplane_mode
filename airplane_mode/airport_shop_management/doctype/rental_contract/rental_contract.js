@@ -76,11 +76,11 @@ frappe.ui.form.on("Rent", {
         frm.set_value("receipt_date", row.paid_on);
         
         let paid_amount =0;
-        console.log("Paid Amount: ", paid_amount);
+        //console.log("Paid Amount: ", paid_amount);
         for(let row of frm.doc.rent_due){
             if(row.paid_on == frm.doc.receipt_date){
                 paid_amount += row.paid_amount;
-                console.log("Paid Amount: ", paid_amount);
+                //console.log("Paid Amount: ", paid_amount);
                 frm.set_value("paid_amount_on_receipt_date", paid_amount);
             }
         }
