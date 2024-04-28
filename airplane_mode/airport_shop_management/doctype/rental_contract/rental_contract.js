@@ -70,6 +70,13 @@ frappe.ui.form.on("Rent", {
             }
         })
     },
+    print_receipt(frm,cdt,cdn){
+        console.log("Printing");
+        let row = frappe.get_doc(cdt,cdn); 
+        frm.set_value("receipt_date", row.paid_on);
+        frm.save();
+        frappe.set_route('print', frm.doc.doctype, frm.doc.name);
+    },
    // amount(frm,cdt, cdn){
    //     frm.trigger("update_total_amount");
    // }
