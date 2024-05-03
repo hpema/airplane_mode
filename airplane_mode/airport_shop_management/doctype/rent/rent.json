@@ -8,6 +8,7 @@
  "field_order": [
   "rental_amount",
   "paid_amount",
+  "reminder_sent",
   "column_break_bpbj",
   "due_date",
   "paid_on",
@@ -58,12 +59,20 @@
    "fieldname": "print_receipt",
    "fieldtype": "Button",
    "label": "Print Receipt"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "reminder_sent",
+   "fieldtype": "Check",
+   "label": "Reminder Sent",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-04-22 11:33:40.538710",
+ "modified": "2024-05-01 13:16:00.078881",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Rent",

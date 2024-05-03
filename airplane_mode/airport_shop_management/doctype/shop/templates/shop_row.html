@@ -1,0 +1,15 @@
+
+<!-- this is a sample default list template -->
+<div class="row">
+	<div class="col-sm-6 mb-3 mb-sm-0">
+	  <div class="card">
+		<div class="card-body">
+		  <h5 class="card-title">Shop: {{ doc.title or doc.name }}</h5>
+		  <p class="card-text">Airport: {{ doc.airport }}</p>
+		  <p class="card-text">Size: {{ doc.size }} | 
+			<strong>Availablity</strong>: {% if doc.available_to_lease %} Available for Rent {% else %} Not Available{% endif %} </p>
+		  {% if doc.available_to_lease %} <a href="#" class="btn btn-primary">Request Rental</a> {% endif %}
+		</div>
+	  </div>
+	</div>
+  </div>

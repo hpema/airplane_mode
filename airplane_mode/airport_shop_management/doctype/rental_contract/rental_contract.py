@@ -6,8 +6,11 @@ from frappe.model.document import Document
 from frappe.utils import *
 from frappe.query_builder import DocType
 from frappe.query_builder.functions import Count
+import frappe.utils
+import frappe.utils.dateutils
 from pypika.terms import Case
-from datetime import date, timedelta
+from frappe.utils.data import nowdate, getdate, now, get_datetime
+from frappe.utils.background_jobs import enqueue
 
 class RentalContract(Document):
 	def validate(self):
@@ -25,6 +28,14 @@ class RentalContract(Document):
 		self.total_amount_paid = 0 
 		self.outstanding_amount = self.total_amount_due
 		self.paid_amount = 0
+		shop = frappe.get_doc("Shop", self.shop)
+		#start_date = datetime.date(self.start_date)
+		#end_date = datetime.date(self.end_date)
+		if self.start_date <= nowdate() and nowdate() < self.end_date:
+			shop.db_set("occupied", 1)
+		if self.end_date <= nowdate():
+			shop.db_set("available_to_lease",1)
+			shop.db_set("occupied",0)
 
 	def on_submit(self):
 		#print(self.name)
@@ -65,10 +76,60 @@ def receive_payment(doctype, name):
         parent.db_set("total_amount_paid", parent.total_amount_paid + line.rental_amount)
         parent.db_set("outstanding_amount", parent.total_amount_due - parent.total_amount_paid)
         parent.db_set("receipt_date", line.paid_on)
-        
+        line.db_set("reminder_sent",1)
         
         #line.save()
         #frappe.db.commit()
         return line.paid_amount
     else:
         return 0
+
+@frappe.whitelist()
+def send_statements():
+	frappe.errprint("flag: " + str(frappe.db.get_single_value("Airport Shop Settings", "send_out_reminders")))
+	if frappe.db.get_single_value("Airport Shop Settings", "send_out_reminders"):
+		frappe.sendmail()
+		data = []
+		parent = frappe.qb.DocType("Rental Contract")
+		child = frappe.qb.DocType("Rent")
+		tenant = frappe.qb.DocType("Tenant")
+  
+		first_day = get_first_day(nowdate())
+		last_day = get_last_day(nowdate())
+
+		query = (
+			frappe.qb.from_(parent)
+			.from_(child)
+			.select(
+			parent.full_name,
+			parent.name,
+			parent.shop,
+			child.due_date,
+			parent.full_name,
+			parent.tenant,
+			child.rental_amount,
+			child.name.as_("rent_name")
+			)
+			.where(parent.name == child.parent)
+			.where(parent.docstatus == 1)
+			.where(child.reminder_sent == 0)
+			.where(child.due_date.between(first_day,last_day))
+		)
+		notifications = query.run(as_dict=True)
+		
+		for due in notifications:
+			frappe.errprint(due)
+			tenant = frappe.get_doc("Tenant", due["tenant"])
+			frappe.errprint(tenant.email)
+   
+			"""send email with payment link"""
+			email_args = {
+				"recipients": tenant.email,
+				"sender": None,
+				"subject": "Payment due on rental contract",
+				"message": "Hi " + tenant.full_name + "<br /><p>You monthly rental for shop: " + due["shop"] + " of " + str(due["rental_amount"]) + " is payable by " + format_date(due["due_date"]) + ". ",
+				"now": True,
+				"attachments": [],
+			}
+			enqueue(method=frappe.sendmail, queue="short", timeout=300, is_async=True, **email_args)
+			frappe.db.set_value("Rent",due["rent_name"],"reminder_sent",1)

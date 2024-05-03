@@ -133,13 +133,18 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
+scheduler_events = {
 # 	"all": [
 # 		"airplane_mode.tasks.all"
 # 	],
-# 	"daily": [
-# 		"airplane_mode.tasks.daily"
-# 	],
+ 	"daily": [
+ 		"airplane_mode.airport_shop_management.doctype.rental_contract.rental_contract.send_statements"
+ 	],
+#    "cron": {
+#        "*/1 * * * *": [
+#            "airplane_mode.airport_shop_management.doctype.rental_contract.rental_contract.send_statements"
+#        ]
+#   }
 # 	"hourly": [
 # 		"airplane_mode.tasks.hourly"
 # 	],
@@ -149,7 +154,7 @@ app_license = "mit"
 # 	"monthly": [
 # 		"airplane_mode.tasks.monthly"
 # 	],
-# }
+ }
 
 # Testing
 # -------

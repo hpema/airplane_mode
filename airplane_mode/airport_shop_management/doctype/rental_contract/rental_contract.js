@@ -16,6 +16,29 @@ frappe.ui.form.on("Rental Contract", {
             frm.set_value("end_date",addMonthsToDate(frm.doc.start_date, 12));
         }
         frm.refresh_field("add_ons");
+        frm.add_custom_button(__('Notification'), function(){
+            frappe.call({
+                method: 'airplane_mode.airport_shop_management.doctype.rental_contract.rental_contract.send_statements',
+                args: {},
+                // disable the button until the request is completed
+                btn: $('.primary-action'),
+                // freeze the screen until the request is completed
+                freeze: true,
+                callback: (r) => {
+                    if (r.message){
+
+                    }else
+                    {
+
+                    }
+                },
+                error: (r) => {
+                    // on error
+                    console.log("error");
+                }
+            })
+
+          }, __('Actions'));
 	},
     end_date(frm){
         if(frm.doc.end_date <= frm.doc.start_date){

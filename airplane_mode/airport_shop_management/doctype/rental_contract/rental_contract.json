@@ -29,13 +29,17 @@
    "fetch_if_empty": 1,
    "fieldname": "rental_amount",
    "fieldtype": "Currency",
-   "label": "Rental Amount"
+   "in_list_view": 1,
+   "label": "Rental Amount",
+   "reqd": 1
   },
   {
    "fieldname": "tenant",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Tenant",
-   "options": "Tenant"
+   "options": "Tenant",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_rvuj",
@@ -44,7 +48,9 @@
   {
    "fieldname": "start_date",
    "fieldtype": "Date",
-   "label": "Start Date"
+   "in_list_view": 1,
+   "label": "Start Date",
+   "reqd": 1
   },
   {
    "fieldname": "end_date",
@@ -73,8 +79,11 @@
   {
    "fieldname": "shop",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Shop",
-   "options": "Shop"
+   "options": "Shop",
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "amended_from",
@@ -130,7 +139,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-04-28 22:17:32.757959",
+ "modified": "2024-05-02 21:11:21.931172",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Rental Contract",

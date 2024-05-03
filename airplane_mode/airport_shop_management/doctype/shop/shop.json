@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_guest_to_view": 1,
  "allow_rename": 1,
  "autoname": "format: {airport}-{number}",
  "creation": "2024-04-18 20:54:44.327136",
@@ -8,8 +9,12 @@
  "field_order": [
   "number",
   "size",
+  "route",
   "column_break_alza",
-  "airport"
+  "airport",
+  "occupied",
+  "available_to_lease",
+  "is_published"
  ],
  "fields": [
   {
@@ -25,17 +30,55 @@
    "fieldname": "airport",
    "fieldtype": "Link",
    "label": "Airport",
-   "options": "Airport"
+   "options": "Airport",
+   "reqd": 1
   },
   {
    "fieldname": "number",
    "fieldtype": "Data",
-   "label": "Number"
+   "label": "Number",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "occupied",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Occupied",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "available_to_lease",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Available To Lease",
+   "read_only": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "Is Published"
   }
  ],
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2024-04-19 09:08:45.522491",
+ "is_published_field": "is_published",
+ "links": [
+  {
+   "group": "Contract",
+   "link_doctype": "Rental Contract",
+   "link_fieldname": "shop",
+   "table_fieldname": "shop"
+  }
+ ],
+ "modified": "2024-05-02 21:09:32.948963",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Shop",
@@ -55,6 +98,7 @@
    "write": 1
   }
  ],
+ "route": "shops",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
