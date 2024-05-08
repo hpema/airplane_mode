@@ -7,7 +7,7 @@
 		  <h5 class="card-title">Shop: {{ doc.title or doc.name }}</h5>
 		  <p class="card-text">Airport: {{ doc.airport }}</p>
 		  <p class="card-text">Size: {{ doc.size }} | <strong>Availablity</strong>: 
-			{% if doc.available_to_lease %} Available for Rent {% else %} Not Available{% endif %} </p>
+			{% if doc.available_to_lease %} Available {% else %} Not Available{% endif %} </p>
 		  	{% if doc.available_to_lease %} <a href="#" class="btn btn-primary">Request Rental</a> {% endif %}
 		</div>
 	  </div>
