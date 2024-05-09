@@ -33,6 +33,7 @@ class RentalContract(Document):
 		#end_date = datetime.date(self.end_date)
 		if self.start_date <= nowdate() and nowdate() < self.end_date:
 			shop.db_set("occupied", 1)
+			shop.db_set("available_to_lease",0)
 		if self.end_date <= nowdate():
 			shop.db_set("available_to_lease",1)
 			shop.db_set("occupied",0)
